@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>valentine?</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link src="https://cdn.tailwindcss.com"></link>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script:wght@400..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  </head>
+  <!-- <img class="absolute top-[-1%] left-0 z-[0]" src="top left.png" alt=""> -->
+  <body class="grad flex items-center justify-center flex-col h-[97vh] z-[-1] overflow-hidden">
+    <img class="absolute -top-[10%] right-[-10%] z-[0]" src="center.png" alt="">
+    <img class="scale-65 absolute bottom-[0] left-[-5%] z-[0]" src="bottom left.png" alt="">
+    <!-- <img class="scale-[0.5] absolute border border-black bottom-[-10%] right-[-10%] z-[0]" src="bottom right.png" alt=""> -->
+    
+  <div id="signature" class="opacity-0 signature absolute top-[3%] left-[2%] text-[#a31f3d] text-sm font-[500]">
+    To Niyanthri, <br>
+    From Vrishank
+  </div>
+    <div id="normal" class="h-[70%] w-[60%] lg:w-[40%] glass grid grid-cols-2 grid-rows-[60%_10%_30%] gap-y-0 place-items-center">
+        <button onclick="start()" id="start" class="ygrad rounded-[50px] px-8 py-3 absolute z-[100]">Click when ready</button>
+        <img id="pic" src="me.jpeg" class="opacity-0 rounded-full col-span-full aspect-square w-[30%]"></img>
+        <div class="text-center leading-[45px] col-span-full"><span id = "1" class="font text-[50px] opacity-[0] ">Hey girl</span> <span id="2" class=" opacity-[0] font text-[50px] ">, will you be my valentine?</span></div>
+        <button onclick="yes()" id="yess" class="opacity-0 ygrad rounded-[50px] px-8 py-3">Absolutely 💖</button>
+        <button onclick="no()" id="nuhuh" class="opacity-0 bg-[#f4d7db] text-[#61182c] border-[2px] border-[#cf576d] shd rounded-[50px] px-10 py-3">Uhmm... 😬</button>
+    </div>
+
+    <div id="yes" class="absolute z-[2] h-[70%] w-[60%] lg:w-[40%] glass grid grid-cols-1 grid-rows-[60%_10%_30%] gap-y-0 hidden place-items-center">
+      <img src="yespage.gif" class='col-span-full scale-[0.65]' aspect-square w-[20%] outline"></img>
+      <div class="scale-75 text-[50px] text-center leading-[45px] text-[#ba2147] col-span-full">YAYYY! I love you 💞</div>
+      <button onclick="yes()" class="ygrad rounded-[50px] px-8 py-3">More hearts</button>
+    </div>
+
+</body>
+<audio id="moosic" loop>
+  <source src="moosic.mp3" type="audio/mpeg">
+</audio>
+
+</html>
+
+
+<style>
+  .signature{
+      font-family: "Courgette", cursive;
+  }
+  *{
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+  .ygrad{
+    background: linear-gradient(to right, #ff4d6d, #cf224b);
+    color: white;
+    box-shadow: 0 0 30px 5px #ff4d6d99;
+    transition: all 0.3s ease
+  }
+  .ygrad:hover {
+  transform: scale(1.1); /* Gentle lift */
+  box-shadow: 0 0 60px 5px #ff4d6d99;
+
+}
+
+  .shd{
+    box-shadow: 0 0 30px #00000025;
+    /* background: #d2bbc0; */
+  }
+
+  .font{
+    font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  color: #ba2147;
+
+  }
+
+.grad{
+background: linear-gradient(-45deg, #fff9f9, #ffd6d6, #ffbaba, #ff8e9e);
+  background-size: 400% 400%;
+  animation: gradientShift 30s ease infinite;
+  height: 100vh;
+  width: 100%;
+}
+.glass{
+  background: #ffffff75;
+        backdrop-filter: blur(1.5px);
+        -webkit-backdrop-filter: blur(1.5px);
+        border-radius: 25px;
+        box-shadow: 0 0 30px #00000010,
+          /* 0 0 100px #e0838310 inset, */
+          0 0 10px #00000010 inset
+      }
+
+
+@keyframes gradientShift {
+  0% {
+    background-position: 50% 50%;
+  }
+  20% {
+    background-position: 75% 50%;
+  }
+  40% {
+    background-position: 100% 75%;
+  }
+  60% {
+    background-position: 75% 100%;
+  }
+  80% {
+    background-position: 50% 75%;
+  }
+  100% {
+    background-position: 50% 50%;
+  }
+  
+}
+</style>
+
+<script>
+  const nuhuh = document.getElementById("nuhuh");
+  const trigger = 0.4 * window.innerWidth;
+  const px = 0.07 * window.innerWidth;
+  const py = 0.07 * window.innerHeight;
+  Move = false;
+
+  data = nuhuh.getBoundingClientRect();
+  const width = data.width;
+  const height = data.height;
+  ready = false;
+
+  setTimeout(() => {
+    ready = true;
+  }, 4000)
+
+
+  function getXY(){
+    // Get coords of the box
+    data = nuhuh.getBoundingClientRect();
+    let x = data.left + width/2
+    let y = data.top + height/2;
+      return {x: x, y: y}
+  }
+
+
+  function move(diff, distance) {
+    // Logic: Find distance and the drs bwn button and mouse
+    // Trigger - distance = r, do rcostheta rsintheta and move respectively
+
+    let angle = Math.atan2(diff.y, diff.x) + (Math.random() - 0.5) * 0.6
+    let time = 0.6;
+    let overwrite = true;
+    // We have that random part to get more of a curvy motion than just straight line
+    let r = trigger - distance
+
+    let newX = Math.cos(angle) * r
+    let newY = Math.sin(angle) * r
+
+    // If somehow you get too close, just go in really far in opp direction
+    if (distance < width/2 + 30) {
+      angle += Math.PI + (Math.random() - 0.5)*2  ; 
+      force = 0.7 * window.innerWidth;
+      newX = Math.cos(angle) * force;
+      newY = Math.sin(angle) * force;
+      time = 0.3;
+      let overwrite = false;
+    }
+
+
+    // If we're gonna become too close to the edges, just set that component ka motion = 0
+    if (data.left + newX < px || data.left + newX > window.innerWidth - px - width) newX = 0
+    if (data.top + newY < py || data.top + newY > window.innerHeight - py - height) newY = 0
+
+    gsap.to(
+      "#nuhuh", {
+        x: "+=" + newX,
+        y: "+=" + newY,
+        ease: "power3.out",
+        duration: time,
+        overwrite: overwrite,
+      }
+    )
+  }
+  
+  
+  window.addEventListener('mousemove', e => {
+      // If you cant figure out what this does you're chopped and ugly
+
+      if (!ready) return;
+      if (!Move) return;
+
+
+      const pos  = {x: e.pageX, y: e.pageY}
+      button = getXY();
+      diff = {x: button.x - pos.x, y: button.y - pos.y};
+      distance = Math.sqrt(diff.x*diff.x + diff.y*diff.y)
+
+      if (distance < trigger){
+        move(diff, distance)
+      }
+      
+})
+</script>
+
+<script>
+  const normal = document.getElementById("normal");
+  const yespage = document.getElementById("yes");
+  const nopage = document.getElementById("no");
+
+  function yes(){
+    yespage.classList.add("inline");
+    yespage.classList.remove("hidden");
+    normal.classList.add("hidden");
+
+    for (let i = 0; i < 50; i++){
+      let heart = document.createElement('div');
+      heart.innerText = "❤️";
+      left = "left-[" + Math.random()*100 + "vw]"
+      scale = (Math.random() * 0.5 + 1)
+      heart.classList.add("absolute", "top-[100%]", left, "scale-[" + scale + "]", "opacity-[0.5]")
+      document.body.appendChild(heart);
+
+      gsap.to(
+        heart, {
+          y: "-=" + (Math.random() * 20 + 50) + "vh",
+          // opacity: 0,
+          duration: 1 + Math.random() * 2,
+          ease: "power1.out",
+          opacity: 0,
+          scale: scale + 0.25,
+          delay: Math.random() * 8,
+          onComplete: () => heart.remove()
+
+        }
+        
+      );
+      
+    }
+  }
+
+</script>
+
+<script>
+  audio = document.getElementById("moosic");
+    audio.currentTime = 9.05; // Start at 30 seconds
+    audio.volume = 0.4;     // 40% Volume
+
+    // --- PLAY LOGIC ---
+    var playPromise = audio.play();
+
+    if (playPromise !== undefined) {
+        playPromise.then(function() {
+            // Automatic success (rare)
+            console.log("Audio started at 0:30!");
+            start()
+        }).catch(function(error) {
+            // Auto-play blocked. Wait for click.
+            console.log("Autoplay blocked. Waiting for click.");
+            document.body.addEventListener('click', function() {
+                audio.play();
+            }, { once: true });
+        });
+    }
+
+  yesb = document.getElementById("yess");
+  no = document.getElementById("nuhuh");
+  pic = document.getElementById("pic");
+  sign = document.getElementById("signature");
+  t1 = document.getElementById("1");
+  t2 = document.getElementById("2");
+  started = document.getElementById("start");
+
+  tl = gsap.timeline({ paused:true, defaults: {duration:0.3, ease: "power3.inOut", opacity:1}, onComplete: () => Move = true})
+  tl.to(
+    t1, {delay:2 }
+    ).to(
+    t2, {}, "+=0.5"
+  ).to([yesb, pic, sign], {}, "+=0.4").to(no, {duration: 0.25}, "<")
+
+
+    function start(){
+
+      console.log("started")
+      gsap.to(
+        started, {opacity: 0, duration: 0.5}
+      )
+
+      tl.play()
+    }
+</script>
